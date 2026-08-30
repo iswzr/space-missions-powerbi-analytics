@@ -91,11 +91,6 @@ table '01 Measures'
 		displayFolder: Financial
 		lineageTag: a0000003-0001-0001-0001-000000000001
 
-	measure 'Total Spend ($B)' = DIVIDE(SUM('Space Mission'[Price_M_USD]), 1000, 0)
-		formatString: \$#,##0.0"B";(\$#,##0.0"B");\$#,##0.0"B"
-		displayFolder: Financial
-		lineageTag: a0000003-0001-0001-0001-000000000008
-
 	measure 'Avg Cost per Launch ($M)' = AVERAGE('Space Mission'[Price_M_USD])
 		formatString: \$#,##0.0;(\$#,##0.0);\$#,##0.0
 		displayFolder: Financial
@@ -349,6 +344,11 @@ table '01 Measures'
 			FORMAT([Total Spend ($M)] / 1000, "#,##0.0") & "B Spend"
 		displayFolder: Formatting & Helpers
 		lineageTag: a0000007-0001-0001-0001-000000000004
+
+	measure 'Total Spend ($B)' = DIVIDE(SUM('Space Mission'[Price_M_USD]), 1000, 0)
+		formatString: \$#,##0.0"B";(\$#,##0.0"B");\$#,##0.0"B"
+		displayFolder: Financial
+		lineageTag: a0000003-0001-0001-0001-000000000008
 
 	column Column1
 		dataType: string
