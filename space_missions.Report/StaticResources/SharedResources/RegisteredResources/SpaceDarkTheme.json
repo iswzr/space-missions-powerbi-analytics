@@ -1,0 +1,203 @@
+{
+  "name": "Space Dark Theme",
+  "dataColors": [
+    "#00F2FE",
+    "#FFB800",
+    "#FF4B4B",
+    "#10B981",
+    "#8B5CF6",
+    "#F97316",
+    "#06B6D4",
+    "#EC4899",
+    "#84CC16",
+    "#F59E0B",
+    "#6366F1",
+    "#14B8A6"
+  ],
+  "good": "#10B981",
+  "neutral": "#FFB800",
+  "bad": "#FF4B4B",
+  "maximum": "#10B981",
+  "center": "#FFB800",
+  "minimum": "#FF4B4B",
+  "foreground": "#E2E8F0",
+  "foregroundNeutralSecondary": "#94A3B8",
+  "foregroundNeutralTertiary": "#64748B",
+  "background": "#0B111E",
+  "tableAccent": "#00F2FE",
+  "hyperlink": "#00F2FE",
+  "backgroundLight": "#131B2E",
+  "backgroundNeutral": "#1E293B",
+  "textClasses": {
+    "callout": {
+      "fontSize": 28,
+      "fontFace": "Segoe UI",
+      "color": "#E2E8F0"
+    },
+    "title": {
+      "fontSize": 14,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#E2E8F0"
+    },
+    "header": {
+      "fontSize": 13,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#E2E8F0"
+    },
+    "label": {
+      "fontSize": 11,
+      "fontFace": "Segoe UI",
+      "color": "#94A3B8"
+    }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#131B2E"
+              }
+            },
+            "transparency": 10
+          }
+        ],
+        "border": [
+          {
+            "color": {
+              "solid": {
+                "color": "#1E293B"
+              }
+            },
+            "radius": 8
+          }
+        ],
+        "visualHeader": [
+          {
+            "foreground": {
+              "solid": {
+                "color": "#94A3B8"
+              }
+            },
+            "background": {
+              "solid": {
+                "color": "transparent"
+              }
+            },
+            "border": {
+              "solid": {
+                "color": "transparent"
+              }
+            }
+          }
+        ],
+        "title": [
+          {
+            "show": true,
+            "fontColor": {
+              "solid": {
+                "color": "#E2E8F0"
+              }
+            },
+            "fontSize": 12,
+            "fontFamily": "Segoe UI Semibold",
+            "alignment": "left"
+          }
+        ],
+        "subTitle": [
+          {
+            "show": true,
+            "fontColor": {
+              "solid": {
+                "color": "#64748B"
+              }
+            },
+            "fontSize": 10,
+            "fontFamily": "Segoe UI"
+          }
+        ],
+        "padding": [
+          {
+            "top": 8,
+            "bottom": 8,
+            "left": 12,
+            "right": 12
+          }
+        ]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#0B111E"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "wallpaper": [
+          {
+            "color": {
+              "solid": {
+                "color": "#0B111E"
+              }
+            },
+            "transparency": 0
+          }
+        ]
+      }
+    },
+    "card": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#131B2E"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "color": {
+              "solid": {
+                "color": "#1E293B"
+              }
+            },
+            "radius": 12
+          }
+        ]
+      }
+    },
+    "slicer": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#131B2E"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "color": {
+              "solid": {
+                "color": "#1E293B"
+              }
+            },
+            "radius": 8
+          }
+        ]
+      }
+    }
+  }
+}

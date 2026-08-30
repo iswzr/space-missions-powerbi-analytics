@@ -1,0 +1,9 @@
+relationship 41f0b2f6-9465-4628-96e9-b5db9f90a1cb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Space Mission'.LaunchDateTime
+	toColumn: LocalDateTable_49825ebb-b8fa-42dd-b0a9-9165fd5238ff.Date
+
+relationship da834636-8b30-8dad-a875-ce45622607cd
+	fromColumn: 'Space Mission'.Date
+	toColumn: 'Date Table'.Date
+

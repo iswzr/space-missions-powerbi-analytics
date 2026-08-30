@@ -1,0 +1,499 @@
+table 'Space Mission'
+	lineageTag: 3fe2b126-a4fb-4815-8d49-b5597f0f3aef
+
+	column Company
+		dataType: string
+		lineageTag: 40200c89-1aae-45e5-8d98-bc3da736bf3c
+		summarizeBy: none
+		sourceColumn: Company
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: 5bb11064-7344-4378-8779-9c27f9c31d38
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a615ab19-ebe8-4159-94fa-6e9f294b3454
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Time
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: eac75227-b06e-46b9-b68b-4b5a1c0618f1
+		summarizeBy: none
+		sourceColumn: Time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column Rocket
+		dataType: string
+		lineageTag: db94f20e-3b65-4620-a0f7-e33d4620de4c
+		summarizeBy: none
+		sourceColumn: Rocket
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mission
+		dataType: string
+		lineageTag: 7b675951-74db-40b0-9ab7-01c020287a86
+		summarizeBy: none
+		sourceColumn: Mission
+
+		annotation SummarizationSetBy = Automatic
+
+	column RocketStatus
+		dataType: string
+		lineageTag: a1a230d3-f71d-41df-b837-909e16308989
+		summarizeBy: none
+		sourceColumn: RocketStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column Price_M_USD
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 8b06a7fc-425e-419e-981a-4dcd007ef35d
+		summarizeBy: sum
+		sourceColumn: Price_M_USD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column MissionStatus
+		dataType: string
+		lineageTag: 9be1be98-d18f-4b55-aa4a-358a582a8d03
+		summarizeBy: none
+		sourceColumn: MissionStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: d0200e59-0e52-4df1-9dac-03226e73731d
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column LaunchSite
+		dataType: string
+		lineageTag: d0d64440-50a8-47eb-892a-d50311911e70
+		summarizeBy: none
+		sourceColumn: LaunchSite
+
+		annotation SummarizationSetBy = Automatic
+
+	column LaunchPad
+		dataType: string
+		lineageTag: b9936afb-ac3b-47de-b436-e43d0cc8ed86
+		summarizeBy: none
+		sourceColumn: LaunchPad
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 0cf97885-a848-47e1-85cc-38ee94618c9f
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Decade
+		dataType: string
+		lineageTag: 14e0f566-d715-4aa6-ac7a-3d7b24b537b4
+		summarizeBy: none
+		sourceColumn: Decade
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: 0e9313be-8e22-4fda-abde-77f19e8f0a94
+		summarizeBy: sum
+		sourceColumn: MonthNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthName
+		dataType: string
+		lineageTag: 7f212717-628f-44cd-8a71-52aeb0395da1
+		summarizeBy: none
+		sourceColumn: MonthName
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfWeek
+		dataType: string
+		lineageTag: 2362cb55-73ce-4de5-8e8f-5c10ba58a94c
+		summarizeBy: none
+		sourceColumn: DayOfWeek
+
+		annotation SummarizationSetBy = Automatic
+
+	column SpaceEra
+		dataType: string
+		lineageTag: 797b9361-4954-4a2e-ac01-77ac4a819b65
+		summarizeBy: none
+		sourceColumn: SpaceEra
+
+		annotation SummarizationSetBy = Automatic
+
+	column HistoricalSovereign
+		dataType: string
+		lineageTag: 1bdbb28b-2d94-446f-bcc8-e1c573fedb07
+		summarizeBy: none
+		sourceColumn: HistoricalSovereign
+
+		annotation SummarizationSetBy = Automatic
+
+	column LaunchDateTime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e39802bc-0d2e-4479-94f0-7ebae829b08c
+		summarizeBy: none
+		sourceColumn: LaunchDateTime
+
+		variation Variation
+			isDefault
+			relationship: 41f0b2f6-9465-4628-96e9-b5db9f90a1cb
+			defaultHierarchy: LocalDateTable_49825ebb-b8fa-42dd-b0a9-9165fd5238ff.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column LaunchHour
+		dataType: int64
+		formatString: 0
+		lineageTag: c3a6e5af-edab-45d5-b339-d8ad27b19599
+		summarizeBy: sum
+		sourceColumn: LaunchHour
+
+		annotation SummarizationSetBy = Automatic
+
+	column TimeOfDay
+		dataType: string
+		lineageTag: 7506b56e-fb99-46a9-8a4f-6d29bfcf21a4
+		summarizeBy: none
+		sourceColumn: TimeOfDay
+
+		annotation SummarizationSetBy = Automatic
+
+	column RocketFamily
+		dataType: string
+		lineageTag: 730fa70f-6a22-4d44-8f74-c8f24baece89
+		summarizeBy: none
+		sourceColumn: RocketFamily
+
+		annotation SummarizationSetBy = Automatic
+
+	column CompanySector
+		dataType: string
+		lineageTag: 96fb7f3f-bb2e-40e7-844a-aa2b730ee6e4
+		summarizeBy: none
+		sourceColumn: CompanySector
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsSuccess
+		dataType: int64
+		formatString: 0
+		lineageTag: e80b505f-35e6-4bfd-a4e7-6497971234f0
+		summarizeBy: sum
+		sourceColumn: IsSuccess
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsFailure
+		dataType: int64
+		formatString: 0
+		lineageTag: bb011241-1b17-4182-8b56-888e85dc9b3d
+		summarizeBy: sum
+		sourceColumn: IsFailure
+
+		annotation SummarizationSetBy = Automatic
+
+	column HasPriceData
+		dataType: int64
+		formatString: 0
+		lineageTag: 77db1fd8-c5d0-44a0-8e41-3e6d2354a050
+		summarizeBy: sum
+		sourceColumn: HasPriceData
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Space Mission' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(
+				        File.Contents("C:\Maven Datasets\Space Mission\space_missions.csv"),
+				        [Delimiter = ",", Columns = 9, Encoding = 1252, QuoteStyle = QuoteStyle.Csv]
+				    ),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				
+				    #"Cleaned Strings" = Table.TransformColumns(#"Promoted Headers", {
+				        {"Mission",       each Text.Replace(Text.Replace(_, "???", " - "), "?", "'"), type text},
+				        {"Location",      each Text.Replace(Text.Replace(Text.Replace(_, "M?hia", "Mahia"), "Alc?ntara", "Alcantara"), "Maranh?o", "Maranhao"), type text},
+				        {"Company",       Text.Trim, type text},
+				        {"Rocket",        Text.Trim, type text},
+				        {"RocketStatus",  Text.Trim, type text},
+				        {"MissionStatus", Text.Trim, type text}
+				    }),
+				
+				    #"Added Location Split" = Table.AddColumn(
+				        #"Cleaned Strings", "LocationParts",
+				        each List.Transform(Text.Split([Location], ","), Text.Trim),
+				        type list
+				    ),
+				
+				    #"Extracted Raw Country" = Table.AddColumn(
+				        #"Added Location Split", "RawCountry",
+				        each List.Last([LocationParts]),
+				        type text
+				    ),
+				
+				    #"Added Country" = Table.AddColumn(
+				        #"Extracted Raw Country", "Country",
+				        each
+				            let raw = [RawCountry] in
+				            if raw = "USA" or raw = "New Mexico" or raw = "Pacific Missile Range Facility" then "USA"
+				            else if raw = "Russia" or raw = "Barents Sea" then "Russia"
+				            else if raw = "Kazakhstan" then "Kazakhstan"
+				            else if raw = "China" or raw = "Yellow Sea" then "China"
+				            else if raw = "France" then "France"
+				            else if raw = "Japan" then "Japan"
+				            else if raw = "India" then "India"
+				            else if raw = "New Zealand" then "New Zealand"
+				            else if raw = "Iran" or raw = "Shahrud Missile Test Site" then "Iran"
+				            else if raw = "Israel" then "Israel"
+				            else if raw = "Kenya" then "Kenya"
+				            else if raw = "Australia" then "Australia"
+				            else if raw = "South Korea" then "South Korea"
+				            else if raw = "North Korea" then "North Korea"
+				            else if raw = "Brazil" then "Brazil"
+				            else if raw = "Gran Canaria" then "Spain"
+				            else if raw = "Pacific Ocean" then "International"
+				            else raw,
+				        type text
+				    ),
+				
+				    #"Added Launch Site" = Table.AddColumn(
+				        #"Added Country", "LaunchSite",
+				        each
+				            let cnt = List.Count([LocationParts]) in
+				            if cnt >= 3 then [LocationParts]{1}
+				            else if cnt = 2 then [LocationParts]{0}
+				            else [Location],
+				        type text
+				    ),
+				
+				    #"Added Launch Pad" = Table.AddColumn(
+				        #"Added Launch Site", "LaunchPad",
+				        each [LocationParts]{0},
+				        type text
+				    ),
+				
+				    #"Removed Temp Cols" = Table.RemoveColumns(
+				        #"Added Launch Pad", {"LocationParts", "RawCountry"}
+				    ),
+				
+				    #"Typed Date Time" = Table.TransformColumnTypes(
+				        #"Removed Temp Cols",
+				        {{"Date", type date}, {"Time", type time}}
+				    ),
+				
+				    #"Added Year" = Table.AddColumn(
+				        #"Typed Date Time", "Year",
+				        each Date.Year([Date]),
+				        Int64.Type
+				    ),
+				
+				    #"Added Decade" = Table.AddColumn(
+				        #"Added Year", "Decade",
+				        each Text.From(Number.IntegerDivide([Year], 10) * 10) & "s",
+				        type text
+				    ),
+				
+				    #"Added Month Number" = Table.AddColumn(
+				        #"Added Decade", "MonthNumber",
+				        each Date.Month([Date]),
+				        Int64.Type
+				    ),
+				
+				    #"Added Month Name" = Table.AddColumn(
+				        #"Added Month Number", "MonthName",
+				        each Date.ToText([Date], "MMM"),
+				        type text
+				    ),
+				
+				    #"Added Day of Week" = Table.AddColumn(
+				        #"Added Month Name", "DayOfWeek",
+				        each Date.DayOfWeekName([Date]),
+				        type text
+				    ),
+				
+				    #"Added Space Era" = Table.AddColumn(
+				        #"Added Day of Week", "SpaceEra",
+				        each
+				            if [Year] <= 1975 then "1. Space Race Era (1957-1975)"
+				            else if [Year] <= 1991 then "2. Cold War & Stations (1976-1991)"
+				            else if [Year] <= 2009 then "3. Commercial Transition (1992-2009)"
+				            else "4. New Space & Constellations (2010-2022)",
+				        type text
+				    ),
+				
+				    #"Added Historical Sovereign" = Table.AddColumn(
+				        #"Added Space Era", "HistoricalSovereign",
+				        each
+				            if ([Country] = "Russia" or [Country] = "Kazakhstan") and [Year] <= 1991 then "USSR"
+				            else if [Country] = "Kazakhstan" and [Year] > 1991 then "Russia (Baikonur Leased)"
+				            else [Country],
+				        type text
+				    ),
+				
+				    #"Added Launch DateTime" = Table.AddColumn(
+				        #"Added Historical Sovereign", "LaunchDateTime",
+				        each
+				            if [Time] <> null then
+				                DateTime.From([Date]) + #duration(0, Time.Hour([Time]), Time.Minute([Time]), Time.Second([Time]))
+				            else
+				                DateTime.From([Date]),
+				        type datetime
+				    ),
+				
+				    #"Added Launch Hour" = Table.AddColumn(
+				        #"Added Launch DateTime", "LaunchHour",
+				        each if [Time] <> null then Time.Hour([Time]) else null,
+				        Int64.Type
+				    ),
+				
+				    #"Added Time of Day" = Table.AddColumn(
+				        #"Added Launch Hour", "TimeOfDay",
+				        each
+				            if [LaunchHour] = null then "Unknown"
+				            else if [LaunchHour] >= 0 and [LaunchHour] < 6 then "Night (00-06)"
+				            else if [LaunchHour] >= 6 and [LaunchHour] < 12 then "Morning (06-12)"
+				            else if [LaunchHour] >= 12 and [LaunchHour] < 18 then "Afternoon (12-18)"
+				            else "Evening (18-24)",
+				        type text
+				    ),
+				
+				    #"Added Rocket Family" = Table.AddColumn(
+				        #"Added Time of Day", "RocketFamily",
+				        each
+				            let r = [Rocket] in
+				            if Text.StartsWith(r, "Falcon") then "Falcon"
+				            else if Text.StartsWith(r, "Cosmos") then "Cosmos"
+				            else if Text.StartsWith(r, "Soyuz") then "Soyuz"
+				            else if Text.StartsWith(r, "Vostok") then "Vostok"
+				            else if Text.StartsWith(r, "Voskhod") then "Voskhod"
+				            else if Text.StartsWith(r, "Molniya") then "Molniya"
+				            else if Text.StartsWith(r, "Tsyklon") then "Tsyklon"
+				            else if Text.StartsWith(r, "Long March") then "Long March"
+				            else if Text.StartsWith(r, "Ariane") then "Ariane"
+				            else if Text.StartsWith(r, "Delta") then "Delta"
+				            else if Text.StartsWith(r, "Atlas") then "Atlas"
+				            else if Text.StartsWith(r, "Titan") then "Titan"
+				            else if Text.StartsWith(r, "Proton") then "Proton"
+				            else if Text.StartsWith(r, "Thor") then "Thor"
+				            else if Text.StartsWith(r, "Saturn") then "Saturn"
+				            else if Text.StartsWith(r, "Electron") then "Electron"
+				            else if Text.StartsWith(r, "Space Shuttle") then "Space Shuttle"
+				            else if Text.StartsWith(r, "PSLV") or Text.StartsWith(r, "GSLV") or Text.StartsWith(r, "SLV") then "ISRO (PSLV/GSLV)"
+				            else if Text.StartsWith(r, "H-I") or Text.StartsWith(r, "H-II") or Text.StartsWith(r, "Mu") or Text.StartsWith(r, "N-I") or Text.StartsWith(r, "N-II") or Text.StartsWith(r, "Lambda") then "Japanese (H/N/Mu)"
+				            else if Text.StartsWith(r, "Zenit") then "Zenit"
+				            else if Text.StartsWith(r, "Strela") or Text.StartsWith(r, "Rokot") or Text.StartsWith(r, "Dnepr") then "Russian ICBM Conversion"
+				            else if Text.StartsWith(r, "Scout") then "Scout"
+				            else "Other",
+				        type text
+				    ),
+				
+				    #"Added Sector" = Table.AddColumn(
+				        #"Added Rocket Family", "CompanySector",
+				        each
+				            let c = [Company] in
+				            if List.Contains({"NASA", "RVSN USSR", "VKS RF", "CASC", "ISRO", "ESA", "CNES", "JAXA", "DLR", "AEB", "KCST", "KARI", "ISA", "CASIC"}, c) then "Government Space Agency"
+				            else if List.Contains({"US Air Force", "US Navy", "AMBA"}, c) then "Military / Defense"
+				            else "Commercial / Private Aerospace",
+				        type text
+				    ),
+				
+				    #"Added IsSuccess" = Table.AddColumn(
+				        #"Added Sector", "IsSuccess",
+				        each if [MissionStatus] = "Success" then 1 else 0,
+				        Int64.Type
+				    ),
+				
+				    #"Added IsFailure" = Table.AddColumn(
+				        #"Added IsSuccess", "IsFailure",
+				        each if [MissionStatus] <> "Success" then 1 else 0,
+				        Int64.Type
+				    ),
+				
+				    #"Cleaned Price" = Table.TransformColumns(
+				        #"Added IsFailure",
+				        {{"Price", each if _ = "" or _ = null then null
+				                        else Number.From(Text.Replace(Text.Trim(_), ",", "")),
+				                   Currency.Type}}
+				    ),
+				
+				    #"Renamed Price" = Table.RenameColumns(
+				        #"Cleaned Price", {{"Price", "Price_M_USD"}}
+				    ),
+				
+				    #"Added HasPrice" = Table.AddColumn(
+				        #"Renamed Price", "HasPriceData",
+				        each if [Price_M_USD] <> null then 1 else 0,
+				        Int64.Type
+				    ),
+				
+				    #"Final Table" = Table.TransformColumnTypes(#"Added HasPrice", {
+				        {"Company",             type text},
+				        {"Location",            type text},
+				        {"Rocket",              type text},
+				        {"Mission",             type text},
+				        {"RocketStatus",        type text},
+				        {"MissionStatus",       type text},
+				        {"Country",             type text},
+				        {"LaunchSite",          type text},
+				        {"LaunchPad",           type text},
+				        {"HistoricalSovereign", type text},
+				        {"RocketFamily",        type text},
+				        {"CompanySector",       type text},
+				        {"SpaceEra",            type text},
+				        {"Decade",              type text},
+				        {"MonthName",           type text},
+				        {"DayOfWeek",           type text},
+				        {"TimeOfDay",           type text},
+				        {"LaunchHour",          Int64.Type},
+				        {"Year",                Int64.Type},
+				        {"MonthNumber",         Int64.Type},
+				        {"IsSuccess",           Int64.Type},
+				        {"IsFailure",           Int64.Type},
+				        {"HasPriceData",        Int64.Type},
+				        {"Price_M_USD",         Currency.Type}
+				    })
+				in
+				    #"Final Table"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

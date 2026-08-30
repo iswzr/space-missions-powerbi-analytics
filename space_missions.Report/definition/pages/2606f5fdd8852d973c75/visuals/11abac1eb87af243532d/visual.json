@@ -1,0 +1,126 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "11abac1eb87af243532d",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "height": 143.81494400587479,
+    "width": 1463.5285478244905,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "01 Measures"
+                    }
+                  },
+                  "Property": "Total Launches"
+                }
+              },
+              "queryRef": "01 Measures.Total Launches",
+              "nativeQueryRef": "Total Launches"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "01 Measures"
+                    }
+                  },
+                  "Property": "Success Rate %"
+                }
+              },
+              "queryRef": "01 Measures.Success Rate %",
+              "nativeQueryRef": "Success Rate %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "01 Measures"
+                    }
+                  },
+                  "Property": "Unique Countries"
+                }
+              },
+              "queryRef": "01 Measures.Unique Countries",
+              "nativeQueryRef": "Unique Countries"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "01 Measures"
+                    }
+                  },
+                  "Property": "Unique Rockets"
+                }
+              },
+              "queryRef": "01 Measures.Unique Rockets",
+              "nativeQueryRef": "Unique Rockets"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "01 Measures"
+                    }
+                  },
+                  "Property": "Total Spend ($M)"
+                }
+              },
+              "queryRef": "01 Measures.Total Spend ($M)",
+              "nativeQueryRef": "Total Spend ($M)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "01 Measures"
+                    }
+                  },
+                  "Property": "Active Rockets"
+                }
+              },
+              "queryRef": "01 Measures.Active Rockets",
+              "nativeQueryRef": "Active Rockets"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "01 Measures"
+                  }
+                },
+                "Property": "Total Launches"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

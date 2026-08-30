@@ -1,0 +1,366 @@
+table '01 Measures'
+	lineageTag: 7e7972f6-6037-4ede-8385-3ac728e5e945
+
+	measure 'Total Launches' = COUNTROWS('Space Mission')
+		formatString: #,##0
+		displayFolder: Core KPIs
+		lineageTag: a0000001-0001-0001-0001-000000000001
+
+	measure 'Successful Missions' = SUM('Space Mission'[IsSuccess])
+		formatString: #,##0
+		displayFolder: Core KPIs
+		lineageTag: a0000001-0001-0001-0001-000000000002
+
+	measure 'Failed Missions' = SUM('Space Mission'[IsFailure])
+		formatString: #,##0
+		displayFolder: Core KPIs
+		lineageTag: a0000001-0001-0001-0001-000000000003
+
+	measure 'Success Rate %' = DIVIDE([Successful Missions], [Total Launches], 0)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Core KPIs
+		lineageTag: a0000001-0001-0001-0001-000000000004
+
+	measure 'Failure Rate %' = DIVIDE([Failed Missions], [Total Launches], 0)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Core KPIs
+		lineageTag: a0000001-0001-0001-0001-000000000005
+
+	measure 'Unique Rockets' = DISTINCTCOUNT('Space Mission'[Rocket])
+		formatString: #,##0
+		displayFolder: Core KPIs
+		lineageTag: a0000001-0001-0001-0001-000000000006
+
+	measure 'Unique Companies' = DISTINCTCOUNT('Space Mission'[Company])
+		formatString: #,##0
+		displayFolder: Core KPIs
+		lineageTag: a0000001-0001-0001-0001-000000000007
+
+	measure 'Unique Countries' = DISTINCTCOUNT('Space Mission'[Country])
+		formatString: #,##0
+		displayFolder: Core KPIs
+		lineageTag: a0000001-0001-0001-0001-000000000008
+
+	measure 'Active Rockets' =
+			CALCULATE(
+			    DISTINCTCOUNT('Space Mission'[Rocket]),
+			    'Space Mission'[RocketStatus] = "Active"
+			)
+		formatString: #,##0
+		displayFolder: Core KPIs
+		lineageTag: a0000001-0001-0001-0001-000000000009
+
+	measure 'Retired Rockets' =
+			CALCULATE(
+			    DISTINCTCOUNT('Space Mission'[Rocket]),
+			    'Space Mission'[RocketStatus] = "Retired"
+			)
+		formatString: #,##0
+		displayFolder: Core KPIs
+		lineageTag: a0000001-0001-0001-0001-000000000010
+
+	measure 'Partial Failures' =
+			CALCULATE(
+			    [Total Launches],
+			    'Space Mission'[MissionStatus] = "Partial Failure"
+			)
+		formatString: #,##0
+		displayFolder: Mission Status
+		lineageTag: a0000002-0001-0001-0001-000000000001
+
+	measure 'Prelaunch Failures' =
+			CALCULATE(
+			    [Total Launches],
+			    'Space Mission'[MissionStatus] = "Prelaunch Failure"
+			)
+		formatString: #,##0
+		displayFolder: Mission Status
+		lineageTag: a0000002-0001-0001-0001-000000000002
+
+	measure 'Full Failures' =
+			CALCULATE(
+			    [Total Launches],
+			    'Space Mission'[MissionStatus] = "Failure"
+			)
+		formatString: #,##0
+		displayFolder: Mission Status
+		lineageTag: a0000002-0001-0001-0001-000000000003
+
+	measure 'Total Spend ($M)' = SUM('Space Mission'[Price_M_USD])
+		formatString: \$#,##0.0;(\$#,##0.0);\$#,##0.0
+		displayFolder: Financial
+		lineageTag: a0000003-0001-0001-0001-000000000001
+
+	measure 'Avg Cost per Launch ($M)' = AVERAGE('Space Mission'[Price_M_USD])
+		formatString: \$#,##0.0;(\$#,##0.0);\$#,##0.0
+		displayFolder: Financial
+		lineageTag: a0000003-0001-0001-0001-000000000002
+
+	measure 'Max Mission Cost ($M)' = MAX('Space Mission'[Price_M_USD])
+		formatString: \$#,##0.0;(\$#,##0.0);\$#,##0.0
+		displayFolder: Financial
+		lineageTag: a0000003-0001-0001-0001-000000000003
+
+	measure 'Min Mission Cost ($M)' = MIN('Space Mission'[Price_M_USD])
+		formatString: \$#,##0.0;(\$#,##0.0);\$#,##0.0
+		displayFolder: Financial
+		lineageTag: a0000003-0001-0001-0001-000000000004
+
+	measure 'Missions with Price Data' = SUM('Space Mission'[HasPriceData])
+		formatString: #,##0
+		displayFolder: Financial
+		lineageTag: a0000003-0001-0001-0001-000000000005
+
+	measure 'Price Coverage %' = DIVIDE([Missions with Price Data], [Total Launches], 0)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Financial
+		lineageTag: a0000003-0001-0001-0001-000000000006
+
+	measure 'Cost of Failures ($M)' =
+			CALCULATE(
+			    SUM('Space Mission'[Price_M_USD]),
+			    'Space Mission'[IsFailure] = 1
+			)
+		formatString: \$#,##0.0;(\$#,##0.0);\$#,##0.0
+		displayFolder: Financial
+		lineageTag: a0000003-0001-0001-0001-000000000007
+
+	measure 'Launches PY' =
+			CALCULATE(
+			    [Total Launches],
+			    SAMEPERIODLASTYEAR('Date Table'[Date])
+			)
+		formatString: #,##0
+		displayFolder: Time Intelligence
+		lineageTag: a0000004-0001-0001-0001-000000000001
+
+	measure 'YoY Launch Growth' =
+			VAR CurrentYear = [Total Launches]
+			VAR PriorYear = [Launches PY]
+			RETURN
+			    DIVIDE(CurrentYear - PriorYear, PriorYear, BLANK())
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Time Intelligence
+		lineageTag: a0000004-0001-0001-0001-000000000002
+
+	measure 'Success Rate PY' =
+			CALCULATE(
+			    [Success Rate %],
+			    SAMEPERIODLASTYEAR('Date Table'[Date])
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Time Intelligence
+		lineageTag: a0000004-0001-0001-0001-000000000003
+
+	measure 'YoY Success Rate Change' =
+			VAR Current = [Success Rate %]
+			VAR Prior = [Success Rate PY]
+			RETURN
+			    IF(
+			        NOT ISBLANK(Prior),
+			        Current - Prior,
+			        BLANK()
+			    )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Time Intelligence
+		lineageTag: a0000004-0001-0001-0001-000000000004
+
+	measure 'Running Total Launches' =
+			CALCULATE(
+			    [Total Launches],
+			    FILTER(
+			        ALL('Date Table'),
+			        'Date Table'[Date] <= MAX('Date Table'[Date])
+			    )
+			)
+		formatString: #,##0
+		displayFolder: Time Intelligence
+		lineageTag: a0000004-0001-0001-0001-000000000005
+
+	measure 'Running Total Successes' =
+			CALCULATE(
+			    [Successful Missions],
+			    FILTER(
+			        ALL('Date Table'),
+			        'Date Table'[Date] <= MAX('Date Table'[Date])
+			    )
+			)
+		formatString: #,##0
+		displayFolder: Time Intelligence
+		lineageTag: a0000004-0001-0001-0001-000000000006
+
+	measure 'Cumulative Success Rate %' = DIVIDE([Running Total Successes], [Running Total Launches], 0)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Time Intelligence
+		lineageTag: a0000004-0001-0001-0001-000000000007
+
+	measure 'Launches per Year (Avg)' = AVERAGEX(VALUES('Date Table'[Year]), [Total Launches])
+		formatString: #,##0.0
+		displayFolder: Time Intelligence
+		lineageTag: a0000004-0001-0001-0001-000000000008
+
+	measure 'Best Year by Launches' =
+			VAR MaxLaunches =
+			    MAXX(ALL('Date Table'[Year]), [Total Launches])
+			RETURN
+			    MAXX(
+			        FILTER(ALL('Date Table'[Year]), [Total Launches] = MaxLaunches),
+			        'Date Table'[Year]
+			    )
+		formatString: 0
+		displayFolder: Time Intelligence
+		lineageTag: a0000004-0001-0001-0001-000000000009
+
+	measure 'Top Rocket by Launches' =
+			VAR MaxLaunches =
+			    MAXX(ALL('Space Mission'[Rocket]), [Total Launches])
+			RETURN
+			    MAXX(
+			        FILTER(ALL('Space Mission'[Rocket]), [Total Launches] = MaxLaunches),
+			        'Space Mission'[Rocket]
+			    )
+		displayFolder: Rocket Analytics
+		lineageTag: a0000005-0001-0001-0001-000000000001
+
+	measure 'Top Rocket Launch Count' = MAXX(ALL('Space Mission'[Rocket]), [Total Launches])
+		formatString: #,##0
+		displayFolder: Rocket Analytics
+		lineageTag: a0000005-0001-0001-0001-000000000002
+
+	measure 'Active Rocket Launches' =
+			CALCULATE(
+			    [Total Launches],
+			    'Space Mission'[RocketStatus] = "Active"
+			)
+		formatString: #,##0
+		displayFolder: Rocket Analytics
+		lineageTag: a0000005-0001-0001-0001-000000000003
+
+	measure 'Retired Rocket Launches' =
+			CALCULATE(
+			    [Total Launches],
+			    'Space Mission'[RocketStatus] = "Retired"
+			)
+		formatString: #,##0
+		displayFolder: Rocket Analytics
+		lineageTag: a0000005-0001-0001-0001-000000000004
+
+	measure 'Active Share %' = DIVIDE([Active Rocket Launches], [Total Launches], 0)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Rocket Analytics
+		lineageTag: a0000005-0001-0001-0001-000000000005
+
+	measure 'Rocket Families Count' = DISTINCTCOUNT('Space Mission'[RocketFamily])
+		formatString: #,##0
+		displayFolder: Rocket Analytics
+		lineageTag: a0000005-0001-0001-0001-000000000006
+
+	measure 'Top Country by Launches' =
+			VAR MaxLaunches =
+			    MAXX(ALL('Space Mission'[Country]), [Total Launches])
+			RETURN
+			    MAXX(
+			        FILTER(ALL('Space Mission'[Country]), [Total Launches] = MaxLaunches),
+			        'Space Mission'[Country]
+			    )
+		displayFolder: Geographic & Sector
+		lineageTag: a0000006-0001-0001-0001-000000000001
+
+	measure 'Government Launches' =
+			CALCULATE(
+			    [Total Launches],
+			    'Space Mission'[CompanySector] = "Government Space Agency"
+			)
+		formatString: #,##0
+		displayFolder: Geographic & Sector
+		lineageTag: a0000006-0001-0001-0001-000000000002
+
+	measure 'Commercial Launches' =
+			CALCULATE(
+			    [Total Launches],
+			    'Space Mission'[CompanySector] = "Commercial / Private Aerospace"
+			)
+		formatString: #,##0
+		displayFolder: Geographic & Sector
+		lineageTag: a0000006-0001-0001-0001-000000000003
+
+	measure 'Military Launches' =
+			CALCULATE(
+			    [Total Launches],
+			    'Space Mission'[CompanySector] = "Military / Defense"
+			)
+		formatString: #,##0
+		displayFolder: Geographic & Sector
+		lineageTag: a0000006-0001-0001-0001-000000000004
+
+	measure 'Commercial Share %' = DIVIDE([Commercial Launches], [Total Launches], 0)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Geographic & Sector
+		lineageTag: a0000006-0001-0001-0001-000000000005
+
+	measure 'Unique Launch Sites' = DISTINCTCOUNT('Space Mission'[LaunchSite])
+		formatString: #,##0
+		displayFolder: Geographic & Sector
+		lineageTag: a0000006-0001-0001-0001-000000000006
+
+	measure 'Country Rank' =
+			IF(
+			    HASONEVALUE('Space Mission'[Country]),
+			    RANKX(
+			        ALL('Space Mission'[Country]),
+			        [Total Launches], , DESC, Dense
+			    )
+			)
+		formatString: 0
+		displayFolder: Formatting & Helpers
+		lineageTag: a0000007-0001-0001-0001-000000000001
+
+	measure 'Rocket Rank' =
+			IF(
+			    HASONEVALUE('Space Mission'[Rocket]),
+			    RANKX(
+			        ALL('Space Mission'[Rocket]),
+			        [Total Launches], , DESC, Dense
+			    )
+			)
+		formatString: 0
+		displayFolder: Formatting & Helpers
+		lineageTag: a0000007-0001-0001-0001-000000000002
+
+	measure 'Success Rate Color' =
+			SWITCH(
+			    TRUE(),
+			    [Success Rate %] >= 0.95, "#10B981",
+			    [Success Rate %] >= 0.85, "#F59E0B",
+			    [Success Rate %] >= 0.70, "#F97316",
+			    "#EF4444"
+			)
+		displayFolder: Formatting & Helpers
+		lineageTag: a0000007-0001-0001-0001-000000000003
+
+	measure 'KPI Subtitle' =
+			FORMAT([Total Launches], "#,##0") & " Missions  |  " &
+			FORMAT([Success Rate %], "0.0%") & " Success  |  $" &
+			FORMAT([Total Spend ($M)] / 1000, "#,##0.0") & "B Spend"
+		displayFolder: Formatting & Helpers
+		lineageTag: a0000007-0001-0001-0001-000000000004
+
+	column Column1
+		dataType: string
+		lineageTag: 6f1e112b-940f-4033-a847-4033860f8aab
+		summarizeBy: none
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '01 Measures' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,221 @@
+table 'Date Table'
+	lineageTag: 6854ca7a-37c8-4df7-8db9-a8c32e21517b
+	dataCategory: Time
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: Long Date
+		lineageTag: c1e51de2-2412-4095-a2af-042bb4d86af2
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 637fb0cd-a034-470f-842a-b4fe2dddb01b
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Decade
+		dataType: string
+		lineageTag: 13932548-f1ec-4bd9-b9e1-96634843d5b9
+		summarizeBy: none
+		sourceColumn: Decade
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		dataType: int64
+		formatString: 0
+		lineageTag: 2fc7f99a-10d2-4cb7-a1ac-f588c9aaec5d
+		summarizeBy: sum
+		sourceColumn: Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column QuarterLabel
+		dataType: string
+		lineageTag: 3115db88-a5a9-44ed-81d0-1452b418841e
+		summarizeBy: none
+		sourceColumn: QuarterLabel
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: 6c034eea-d5a2-47d2-9e02-3c83bdf50fe3
+		summarizeBy: sum
+		sourceColumn: MonthNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthName
+		dataType: string
+		lineageTag: abd7d238-3382-44fa-a8ea-f91f8884b5a9
+		summarizeBy: none
+		sourceColumn: MonthName
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthShort
+		dataType: string
+		lineageTag: b758db2e-c850-438e-86ed-2cec1f6a3357
+		summarizeBy: none
+		sourceColumn: MonthShort
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfMonth
+		dataType: int64
+		formatString: 0
+		lineageTag: 7597aa9a-11fb-4e18-a99d-c2010aa459fc
+		summarizeBy: sum
+		sourceColumn: DayOfMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfWeek
+		dataType: int64
+		formatString: 0
+		lineageTag: 53de6858-029a-4b23-b20f-5bd7bda98d1f
+		summarizeBy: sum
+		sourceColumn: DayOfWeek
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayName
+		dataType: string
+		lineageTag: cd294600-9e2c-4e9d-b962-fbd77d1f93e8
+		summarizeBy: none
+		sourceColumn: DayName
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekOfYear
+		dataType: int64
+		formatString: 0
+		lineageTag: 124cf571-dcc4-4988-843c-e121c544af03
+		summarizeBy: sum
+		sourceColumn: WeekOfYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsWeekend
+		dataType: int64
+		formatString: 0
+		lineageTag: 67d716dd-a2da-40ab-bb10-ccf0972cd66d
+		summarizeBy: sum
+		sourceColumn: IsWeekend
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonth
+		dataType: string
+		lineageTag: e0a62721-84dd-4b64-9622-0fbee2f18dc7
+		summarizeBy: none
+		sourceColumn: YearMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearQuarter
+		dataType: string
+		lineageTag: 308a1711-7fd9-4415-ab42-c20fd94289d6
+		summarizeBy: none
+		sourceColumn: YearQuarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column SpaceEra
+		dataType: string
+		lineageTag: df10101a-b8bc-45f4-9f8f-3c5a3d13ace9
+		summarizeBy: none
+		sourceColumn: SpaceEra
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateIndex
+		dataType: int64
+		formatString: 0
+		lineageTag: dd173dc2-08dd-4d76-a059-200eb1cf01ea
+		summarizeBy: sum
+		sourceColumn: DateIndex
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Date Table' = m
+		mode: import
+		source =
+				let
+				    StartDate = #date(1957, 1, 1),
+				    EndDate   = #date(2022, 12, 31),
+				    DayCount  = Duration.Days(EndDate - StartDate) + 1,
+				    DateList  = List.Dates(StartDate, DayCount, #duration(1, 0, 0, 0)),
+				    ToTable   = Table.FromList(DateList, Splitter.SplitByNothing(), {"Date"}, null, ExtraValues.Error),
+				    TypedDate = Table.TransformColumnTypes(ToTable, {{"Date", type date}}),
+				
+				    #"Added Year" = Table.AddColumn(TypedDate, "Year", each Date.Year([Date]), Int64.Type),
+				
+				    #"Added Decade" = Table.AddColumn(#"Added Year", "Decade",
+				        each Text.From(Number.IntegerDivide([Year], 10) * 10) & "s", type text),
+				
+				    #"Added Quarter" = Table.AddColumn(#"Added Decade", "Quarter",
+				        each Date.QuarterOfYear([Date]), Int64.Type),
+				
+				    #"Added Quarter Label" = Table.AddColumn(#"Added Quarter", "QuarterLabel",
+				        each "Q" & Text.From(Date.QuarterOfYear([Date])), type text),
+				
+				    #"Added Month Number" = Table.AddColumn(#"Added Quarter Label", "MonthNumber",
+				        each Date.Month([Date]), Int64.Type),
+				
+				    #"Added Month Name" = Table.AddColumn(#"Added Month Number", "MonthName",
+				        each Date.ToText([Date], "MMMM"), type text),
+				
+				    #"Added Month Short" = Table.AddColumn(#"Added Month Name", "MonthShort",
+				        each Date.ToText([Date], "MMM"), type text),
+				
+				    #"Added Day of Month" = Table.AddColumn(#"Added Month Short", "DayOfMonth",
+				        each Date.Day([Date]), Int64.Type),
+				
+				    #"Added Day of Week" = Table.AddColumn(#"Added Day of Month", "DayOfWeek",
+				        each Date.DayOfWeek([Date], Day.Monday) + 1, Int64.Type),
+				
+				    #"Added Day Name" = Table.AddColumn(#"Added Day of Week", "DayName",
+				        each Date.DayOfWeekName([Date]), type text),
+				
+				    #"Added Week of Year" = Table.AddColumn(#"Added Day Name", "WeekOfYear",
+				        each Date.WeekOfYear([Date]), Int64.Type),
+				
+				    #"Added Is Weekend" = Table.AddColumn(#"Added Week of Year", "IsWeekend",
+				        each if Date.DayOfWeek([Date], Day.Monday) >= 5 then 1 else 0, Int64.Type),
+				
+				    #"Added Year Month" = Table.AddColumn(#"Added Is Weekend", "YearMonth",
+				        each Date.ToText([Date], "yyyy-MM"), type text),
+				
+				    #"Added Year Quarter" = Table.AddColumn(#"Added Year Month", "YearQuarter",
+				        each Text.From([Year]) & "-Q" & Text.From(Date.QuarterOfYear([Date])), type text),
+				
+				    #"Added Space Era" = Table.AddColumn(#"Added Year Quarter", "SpaceEra",
+				        each
+				            if [Year] <= 1975 then "1. Space Race Era (1957-1975)"
+				            else if [Year] <= 1991 then "2. Cold War & Stations (1976-1991)"
+				            else if [Year] <= 2009 then "3. Commercial Transition (1992-2009)"
+				            else "4. New Space & Constellations (2010-2022)",
+				        type text),
+				
+				    #"Added Sort Index" = Table.AddColumn(#"Added Space Era", "DateIndex",
+				        each Number.From([Date]), Int64.Type)
+				in
+				    #"Added Sort Index"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

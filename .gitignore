@@ -1,0 +1,17 @@
+# Power BI Desktop & PBIP (Developer Mode) Exclusions
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+**/.pbi/temp*
+**/.pbi/*.tmp
+
+# OS & Editor generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+.vscode/
+.idea/
+
+# Temporary data files
+scratch/
+*.tmp

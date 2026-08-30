@@ -1,0 +1,23 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Space Mission","Date Table","01 Measures"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table 'Space Mission'
+ref table DateTableTemplate_76e2d6aa-90e1-4d5a-b4e9-599b1d048ef8
+ref table LocalDateTable_49825ebb-b8fa-42dd-b0a9-9165fd5238ff
+ref table 'Date Table'
+ref table '01 Measures'
+
+ref cultureInfo en-US
+

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "space_missions"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "0448a37b-4eef-42f0-8d5c-615b68b528e4"
+  }
+}
