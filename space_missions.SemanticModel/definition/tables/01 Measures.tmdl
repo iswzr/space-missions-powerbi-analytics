@@ -350,6 +350,41 @@ table '01 Measures'
 		displayFolder: Financial
 		lineageTag: a0000003-0001-0001-0001-000000000008
 
+	measure '90 Line' = 0.90
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: ee8cba8a-8be5-4cd7-ae83-b2d89ccacc35
+
+	measure 'Milestone Success Rate' = ```
+			
+			VAR CurrentYear = SELECTEDVALUE('Date Table'[Year])
+			VAR CurrentRate = [Success Rate %]
+			
+			// Ignore years with no launches or blank rates
+			VAR ValidYears = 
+			    FILTER(
+			        ALLSELECTED('Date Table'[Year]),
+			        NOT(ISBLANK([Success Rate %])) && [Total Launches] > 0
+			    )
+			
+			// Dynamic Extremes
+			VAR MaxRate = MAXX(ValidYears, [Success Rate %])
+			VAR MinRate = MINX(ValidYears, [Success Rate %])
+			VAR MinYear = MINX(ValidYears, 'Date Table'[Year])
+			VAR MaxYear = MAXX(ValidYears, 'Date Table'[Year])
+			
+			// Trigger condition
+			VAR IsDynamicMilestone = 
+			    CurrentYear = MinYear || 
+			    CurrentYear = MaxYear || 
+			    CurrentRate = MaxRate || 
+			    CurrentRate = MinRate
+			
+			RETURN
+			    IF(IsDynamicMilestone, CurrentRate, BLANK())
+			```
+		formatString: 0%;-0%;0%
+		lineageTag: 952c20b5-d71c-432d-ac0d-2feb76f683d1
+
 	column Column1
 		dataType: string
 		lineageTag: 6f1e112b-940f-4033-a847-4033860f8aab

@@ -4,5 +4,58 @@
   "displayName": " Mission Control",
   "displayOption": "FitToPage",
   "height": 1080,
-  "width": 1920
+  "width": 1920,
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#0B111E'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "b10057d45bae28c7e75b",
+      "target": "479a24201c3d9de9f8e7",
+      "type": "DataFilter"
+    },
+    {
+      "source": "b10057d45bae28c7e75b",
+      "target": "19a0e9a837d2d179b32d",
+      "type": "HighlightFilter"
+    },
+    {
+      "source": "b10057d45bae28c7e75b",
+      "target": "d81242d8b5d382066fb0",
+      "type": "DataFilter"
+    },
+    {
+      "source": "b10057d45bae28c7e75b",
+      "target": "43b12e0baa0c74d66a05",
+      "type": "DataFilter"
+    },
+    {
+      "source": "43b12e0baa0c74d66a05",
+      "target": "19a0e9a837d2d179b32d",
+      "type": "HighlightFilter"
+    }
+  ]
 }

@@ -1,0 +1,12 @@
+{
+  "name": "Space Mission",
+  "textClasses": {
+    "label": {
+      "color": "#94A3B8"
+    },
+    "title": {
+      "color": "#94A3B8",
+      "fontSize": 11
+    }
+  }
+}

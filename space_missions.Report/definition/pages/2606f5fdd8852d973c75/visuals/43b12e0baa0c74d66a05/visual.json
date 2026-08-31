@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
   "name": "43b12e0baa0c74d66a05",
   "position": {
-    "x": 741.17238211268443,
-    "y": 510.47634264714691,
-    "z": 2002,
-    "height": 348.4982723841099,
-    "width": 731.3555293694701,
-    "tabOrder": 2002
+    "x": 638.70754543785563,
+    "y": 452.59408848907651,
+    "z": 4000,
+    "height": 348.96273177896086,
+    "width": 723.30457132366439,
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "treemap",
@@ -108,18 +108,25 @@
                         }
                       },
                       "FillRule": {
-                        "linearGradient2": {
+                        "linearGradient3": {
                           "min": {
                             "color": {
                               "Literal": {
-                                "Value": "'#D64550'"
+                                "Value": "'#FF4B4B'"
+                              }
+                            }
+                          },
+                          "mid": {
+                            "color": {
+                              "Literal": {
+                                "Value": "'#FFB800'"
                               }
                             }
                           },
                           "max": {
                             "color": {
                               "Literal": {
-                                "Value": "'#1BCA53'"
+                                "Value": "'#10B981'"
                               }
                             }
                           },
@@ -173,6 +180,87 @@
               }
             }
           }
+        },
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1E293B'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1E293B'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "layout": [
+        {
+          "properties": {
+            "innerPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
+                }
+              }
+            }
+          }
         }
       ]
     },
@@ -183,7 +271,39 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Top Countries by Launches'"
+                  "Value": "'🏢 Top Aerospace Companies & Agencies'"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#94A3B8'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "13D"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI Semibold'', wf_segoe-ui_semibold, helvetica, arial, sans-serif'"
                 }
               }
             }
@@ -197,6 +317,74 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#131B2E'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1E293B'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "3D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
                 }
               }
             }
@@ -222,34 +410,6 @@
         },
         "type": "TopN",
         "howCreated": "User"
-      },
-      {
-        "name": "6364130d9dc3dfdff7f5",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "01 Measures"
-              }
-            },
-            "Property": "Total Launches"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "098b7bef1e27842700e4",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "01 Measures"
-              }
-            },
-            "Property": "Success Rate %"
-          }
-        },
-        "type": "Advanced"
       },
       {
         "name": "5ea2d26f2f8ee0d7099c",
